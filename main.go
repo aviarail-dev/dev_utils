@@ -13,6 +13,16 @@ func Break() {
 	runtime.Breakpoint()
 }
 
+func BreakC(conditions ...bool) {
+	for i, c := range conditions {
+		_ = i
+		if c {
+			Break();
+			break
+		}
+	}
+}
+
 func Assert(ok bool, v ...any) {
 	if !ok {
 		Panic(v...)
