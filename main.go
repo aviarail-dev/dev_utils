@@ -12,3 +12,16 @@ func Panic(v ...any) {
 func Break() {
 	runtime.Breakpoint()
 }
+
+func Assert(ok bool, v ...any) {
+	if !ok {
+		Panic(v...)
+	}
+}
+
+func Unreachable(v ...any) {
+	if len(v) == 0 {
+		Panic("unreachble code executed")
+	}
+	Panic(v...)
+}
